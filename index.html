@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUISE ELEGANCE — Ваше лучшее путешествие</title>
+
+    <!-- Подключение шрифтов -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        /* Базовые настройки для всего сайта */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #fcfbfa;
+            color: #1e242b;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- НАВИГАЦИЯ (Десктоп) --- */
+        .navbar {
+            padding: 25px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(30, 36, 43, 0.08);
+        }
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #1e242b;
+            text-decoration: none;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #1e242b;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover {
+            color: #c6a15a;
+        }
+
+        /* --- ГЛАВНЫЙ ЭКРАН (Десктоп) --- */
+        .hero {
+            padding: 80px 0;
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+        .hero-content {
+            flex: 1.1;
+        }
+        .hero-tag {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #c6a15a;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: block;
+        }
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.8rem;
+            line-height: 1.1;
+            font-weight: 400;
+            color: #1e242b;
+            margin-bottom: 25px;
+        }
+        .hero-text {
+            font-size: 1.05rem;
+            color: #525a66;
+            margin-bottom: 35px;
+            font-weight: 300;
+        }
+        
+        .btn-gold {
+            display: inline-block;
+            background-color: #c6a15a;
+            color: #ffffff;
+            padding: 18px 45px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(198, 161, 90, 0.15);
+            border: none;
+            cursor: pointer;
+        }
+        .btn-gold:hover {
+            background-color: #b38f4b;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(198, 161, 90, 0.25);
+        }
+
+        .hero-image-box {
+            flex: 0.9;
+        }
+        .hero-img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 4px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+        }
+
+        /* --- БЛОК СТАТИСТИКИ (Десктоп) --- */
+        .stats-bar {
+            background-color: #121926;
+            color: #ffffff;
+            padding: 40px 0;
+            margin-bottom: 80px;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            text-align: center;
+            gap: 20px;
+        }
+        .stats-item h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #c6a15a;
+            font-weight: 400;
+            margin-bottom: 5px;
+        }
+        .stats-item p {
+            font-size: 0.85rem;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Стили заголовков для всех секций */
+        .section-header {
+            max-width: 600px;
+            margin-bottom: 60px;
+        }
+        .section-tag {
+            font-size: 0.8rem;
+            color: #c6a15a;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 400;
+            color: #1e242b;
+        }
+
+        /* --- СЕКЦИЯ ПРЕИМУЩЕСТВ (Десктоп) --- */
+        .features-section {
+            padding: 40px 0 80px 0;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+        .feature-card {
+            display: flex;
+            flex-direction: column;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 4px;
+            box-shadow: 0 4px 25px rgba(0,0,0,0.02);
+            transition: transform 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        .feature-img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            margin-bottom: 25px;
+            border-radius: 2px;
+        }
+        .feature-card-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1e242b;
+            margin-bottom: 15px;
+        }
+        .feature-card-text {
+            font-size: 0.95rem;
+            color: #525a66;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        /* --- СЕКЦИЯ НАПРАВЛЕНИЙ (Десктоп) --- */
+        .destinations-section {
+            padding: 80px 0;
+            background-color: #f4f2ee;
+        }
+        .destinations-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+        .dest-card {
+            display: flex;
+            flex-direction: column;
+            background: #ffffff;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        }
+        .dest-img-wrapper {
+            position: relative;
+            overflow: hidden;
+        }
+        .dest-img {
+            width: 100%;
+            height: 440px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .dest-card:hover .dest-img {
+            transform: scale(1.04);
+        }
+        .dest-meta {
+            padding: 30px;
+        }
+        .dest-card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: #1e242b;
+            margin-bottom: 10px;
+        }
+        .dest-card-subtitle {
+            font-size: 0.9rem;
+            color: #c6a15a;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- СЕКЦИЯ ОТЗЫВОВ (Десктоп) --- */
+        .reviews-section {
+            padding: 100px 0;
+            background: #ffffff;
+        }
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 50px;
+        }
+        .review-card {
+            border-left: 3px solid #c6a15a;
+            padding-left: 30px;
+        }
+        .review-text {
+            font-style: italic;
+            font-size: 1.1rem;
+            color: #525a66;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+        .review-author {
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- ФУТЕР И СВЯЗЬ (Десктоп) --- */
+        .cta-footer {
+            background-color: #121926;
+            color: #ffffff;
+            padding: 90px 0 60px 0;
+        }
+        .cta-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 80px;
+            margin-bottom: 60px;
+        }
+        .cta-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            line-height: 1.2;
+            font-weight: 400;
+            margin-bottom: 25px;
+        }
+        .cta-desc {
+            font-size: 1rem;
+            color: #9ca3af;
+            max-width: 500px;
+            font-weight: 300;
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+        .contact-info-list {
+            list-style: none;
+        }
+        .contact-info-list li {
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            color: #cbd5e1;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .contact-info-list a {
+            color: #c6a15a;
+            text-decoration: none;
+        }
+
+        .form-container {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 40px;
+            border-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-label {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #9ca3af;
+            margin-bottom: 8px;
+        }
+        .cta-input {
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 15px 20px;
+            border-radius: 4px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            color: #ffffff;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        .cta-input:focus {
+            border-color: #c6a15a;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background-color: #c6a15a;
+            color: #121926;
+            border: none;
+            padding: 18px 25px;
+            border-radius: 4px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+        .btn-submit:hover {
+            background-color: #ffffff;
+            color: #121926;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        /* ==========================================================================
+           АДАПТИВНЫЙ БЛОК ДЛЯ ПЛАНШЕТОВ И СМАРТФОНОВ (Media Queries)
+           ========================================================================== */
+
+        /* Корректировки для средних экранов (Планшеты) */
+        @media (max-width: 992px) {
+            .hero { 
+                flex-direction: column-reverse; /* На планшетах изображение встает над текстом для баланса */
+                text-align: center; 
+                padding: 50px 0;
+                gap: 40px;
+            }
+            .hero-text { margin: 0 auto 30px auto; }
+            .hero-img { height: 400px; }
+            .stats-bar { margin-bottom: 50px; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
+            .features-grid { grid-template-columns: 1fr; gap: 30px; }
+            .destinations-grid { grid-template-columns: 1fr; gap: 30px; }
+            .reviews-grid { grid-template-columns: 1fr; gap: 40px; }
+            .cta-grid { grid-template-columns: 1fr; gap: 50px; }
+        }
+
+        /* Полная перестройка под мобильные телефоны */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column; /* Шапка выстраивается вертикально */
+                gap: 20px;
+                padding: 20px 0;
+            }
+            .nav-links {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .nav-links a {
+                font-size: 0.8rem;
+            }
+            .hero-title {
+                font-size: 2.4rem; /* Аккуратный размер заголовка на маленьком экране */
+            }
+            .hero-img {
+                height: 300px;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .section-header {
+                margin-bottom: 40px;
+                text-align: center; /* Центрируем заголовки секций на мобильных */
+            }
+            .dest-img {
+                height: 300px;
+            }
+            .dest-meta {
+                padding: 20px;
+            }
+            .reviews-section {
+                padding: 60px 0;
+            }
+            .review-card {
+                padding-left: 20px;
+            }
+            .review-text {
+                font-size: 1rem;
+            }
+            .cta-title {
+                font-size: 2rem;
+                text-align: center;
+            }
+            .cta-desc {
+                text-align: center;
+                margin: 0 auto 30px auto;
+            }
+            .contact-info-list {
+                display: flex;
+                flex-direction: column;
+                align-items: center; /* Центрируем контакты */
+                margin-bottom: 20px;
+            }
+            .form-container {
+                padding: 25px 20px;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+        }
+
+        /* Оптимизация для ультра-узких экранов (смартфоны вертикально) */
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr; /* Статистика строго в один столбец */
+                gap: 25px;
+            }
+            .btn-gold, .btn-submit {
+                width: 100%; /* Кнопки растягиваются на всю ширину экрана — по ним легче попадать пальцем */
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Шапка (Navbar) -->
+        <nav class="navbar">
+            <a href="#" class="logo">Cruise Elegance</a>
+            <ul class="nav-links">
+                <li><a href="#about">О клубе</a></li>
+                <li><a href="#liner">Лайнер</a></li>
+                <li><a href="#routes">Маршруты</a></li>
+                <li><a href="#reviews">Отзывы</a></li>
+                <li><a href="#contacts">Контакты</a></li>
+            </ul>
+        </nav>
+
+        <!-- Главный экран (Hero) -->
+        <header class="hero" id="about">
+            <div class="hero-content">
+                <span class="hero-tag">Закрытый морской клуб</span>
+                <h1 class="hero-title">Ваше лучшее путешествие начинается в океане</h1>
+                <p class="hero-text">Откройте для себя истинную роскошь пятизвездочных круизов. Эксклюзивные кругосветные и региональные маршруты, персонализированный консьерж-сервис 24/7 и новые панорамы у вашего порога каждое утро.</p>
+                <a href="#contacts" class="btn-gold">Подобрать круиз</a>
+            </div>
+            <div class="hero-image-box">
+                <img src="https://images.unsplash.com/photo-1548574505-5e239809ee19?auto=format&fit=crop&w=800&q=80" alt="Роскошный лайнер в океане" class="hero-img">
+            </div>
+        </header>
+    </div>
+
+    <!-- Информационный блок (Статистика) -->
+    <div class="stats-bar">
+        <div class="container stats-grid">
+            <div class="stats-item">
+                <h3>15+</h3>
+                <p>Лет на рынке люкс-туризма</p>
+            </div>
+            <div class="stats-item">
+                <h3>120+</h3>
+                <p>Уникальных маршрутов</p>
+            </div>
+            <div class="stats-item">
+                <h3>98%</h3>
+                <p>Довольных резидентов</p>
+            </div>
+            <div class="stats-item">
+                <h3>24/7</h3>
+                <p>Поддержка в путешествии</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Секция 01 (Преимущества) -->
+        <section class="features-section" id="liner">
+            <div class="section-header">
+                <span class="section-tag">Преимущества</span>
+                <h2 class="section-title">Новый взгляд на безупречный отдых</h2>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80" alt="Изысканная каюта" class="feature-img">
+                    <h3 class="feature-card-title">Отель 5*, который в движении</h3>
+                    <p class="feature-card-text">Забудьте об утомительной логистике, пересадках и багаже. Ваши роскошные апартаменты премиум-класса перемещаются вместе с вами по красивейшим акваториям планеты.</p>
+                </div>
+
+                <div class="feature-card">
+                    <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80" alt="Гастрономия" class="feature-img">
+                    <h3 class="feature-card-title">All Inclusive нового уровня</h3>
+                    <p class="feature-card-text">Авторские рестораны от шеф-поваров со звездами Мишлен, изысканные винотеки, вечерние шоу бродвейского масштаба и премиальные SPA-комплексы уже включены в ваш тур.</p>
+                </div>
+
+                <div class="feature-card">
+                    <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=600&q=80" alt="Открытый бассейн" class="feature-img">
+                    <h3 class="feature-card-title">Новые страны каждое утро</h3>
+                    <p class="feature-card-text">Засыпайте под мерный шум волн, а просыпайтесь в новом порту. За стандартный недельный круиз вы сможете изучить культуру от 5 до 7 знаковых городов мира.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Секция 02 (Маршруты) -->
+    <section class="destinations-section" id="routes">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Направления</span>
+                <h2 class="section-title">Популярные маршруты сезона</h2>
+            </div>
+
+            <div class="destinations-grid">
+                <div class="dest-card">
+                    <div class="dest-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=800&q=80" alt="Средиземноморье" class="dest-img">
+                    </div>
+                    <div class="dest-meta">
+                        <h3 class="dest-card-title">Классическое Средиземноморье</h3>
+                        <span class="dest-card-subtitle">Италия — Греция — Турция — Хорватия — Монако</span>
+                    </div>
+                </div>
+
+                <div class="dest-card">
+                    <div class="dest-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Карибы" class="dest-img">
+                    </div>
+                    <div class="dest-meta">
+                        <h3 class="dest-card-title">Экзотический Карибский бассейн</h3>
+                        <span class="dest-card-subtitle">Майами — Багамы — Мексика — Ямайка — Частные атоллы</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция 03 (Отзывы) -->
+    <section class="reviews-section" id="reviews">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Отзывы</span>
+                <h2 class="section-title">Что говорят наши резиденты</h2>
+            </div>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <p class="review-text">«Организация превзошла все ожидания. Маршрут по Средиземноморью был составлен так, что мы избежали толп туристов. Сервис на борту — это эталон гостеприимства». </p>
+                    <div class="review-author">Александр и Елена В.</div>
+                </div>
+                <div class="review-card">
+                    <p class="review-text">«Cruise Elegance открыли для нас совершенно другой формат отдыха. Каюта сопоставима с люксом в лучших отелях Парижа. Обязательно вернемся в клуб снова». </p>
+                    <div class="review-author">Екатерина М.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал и Форма бронирования (CTA Footer) -->
+    <footer class="cta-footer" id="contacts">
+        <div class="container">
+            <div class="cta-grid">
+                <div class="cta-left">
+                    <h2 class="cta-title">Станьте частью закрытого клуба путешественников</h2>
+                    <p class="cta-desc">Оставьте заявку, чтобы получить персональный каталог закрытых направлений, доступ к раннему бронированию и клубные привилегии.</p>
+                    
+                    <ul class="contact-info-list">
+                        <li><strong>Телефон:</strong> <a href="tel:+375290000000">+375 (29) 000-00-00</a></li>
+                        <li><strong>Email:</strong> <a href="mailto:info@cruise-elegance.com">info@cruise-elegance.com</a></li>
+                        <li><strong>Адрес:</strong> г. Минск, ул. Интернациональная, 12</li>
+                        <li><strong>Время работы:</strong> Пн-Вс: 10:00 — 20:00</li>
+                    </ul>
+                </div>
+                
+                <div class="cta-right">
+                    <div class="form-container">
+                        <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Заявка успешно принята. Наш эксперт свяжется с вами в течение 15 минут.');">
+                            <div class="form-group">
+                                <label class="form-label">Ваше имя</label>
+                                <input type="text" class="cta-input" placeholder="Александр" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Номер телефона</label>
+                                <input type="tel" class="cta-input" placeholder="+375 (__) ___-__-__" required>
+                            </div>
+                            <button type="submit" class="btn-submit">Получить презентацию</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Cruise Elegance Club. Все права защищены.</p>
+                <p>Политика конфиденциальности</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
